@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCIP 2025 Video Coding Challenge</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #e3f1fb 0%, #c3e2fa 100%);
+            color: #1b325a;
+        }
+        header {
+            background: #e9f3fd;
+            border-bottom: 2px solid #bfd7f4;
+            box-shadow: 0 2px 14px rgba(30,80,160,0.07);
+        }
+        header .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 18px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header h1 {
+            color: #2179d6;
+            text-shadow: 0 3px 10px #c7e1fd;
+            text-align: center;
+        }
+        header nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            gap: 18px;
+            margin-top: 6px;
+            padding-left: 0;
+        }
+        header nav ul li a {
+            color: #2179d6;
+            background: #f3f8fd;
+            font-size: 1.1em;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background 0.18s, color 0.18s;
+            display: block;
+            text-align: center;
+        }
+        header nav ul li a:hover,
+        header nav ul li a:focus {
+            background: #d2e7fb;
+            color: #104d94;
+        }
+        #hero {
+            background: linear-gradient(120deg, #298fe6 30%, #68c3ff 100%);
+            min-height: 270px;
+            border-radius: 0 0 34px 34px;
+            box-shadow: 0 10px 30px #2179d620;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 26px;
+        }
+        .hero-content {
+            width: 100%;
+            color: #fff;
+            text-shadow: 0 4px 24px #1462a9;
+            text-align: center;
+            padding: 36px 12px 30px 12px;
+        }
+        .hero-content h2 {
+            font-size: 2.3em;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .hero-content p {
+            font-size: 1.2em;
+        }
+        .card {
+            background: #fafdff;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px #2179d623;
+            padding: 34px 22px;
+            max-width: 900px;
+            min-width: 260px;
+            margin: 0 auto 30px auto;
+            border-left: 5px solid #68c3ff;
+            text-align: center;
+            position: relative;
+        }
+        .card h2 {
+            color: #2179d6;
+            border-bottom: 1.5px solid #bbe2fd;
+            padding-bottom: 6px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .card ul {
+            margin: 0 auto 7px auto;
+            padding-left: 0;
+            list-style: none;
+            display: inline-block;
+            text-align: left;
+        }
+        .card ul li {
+            margin-bottom: 7px;
+            font-size: 1.07em;
+        }
+        .tracks-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: stretch;
+            margin-bottom: 10px;
+        }
+        .tracks-list > div {
+            flex: 1 1 260px;
+            background: #e9f5fd;
+            border-left: 4px solid #57a3ec;
+            border-radius: 13px;
+            padding: 20px 12px;
+            min-width: 220px;
+            max-width: 330px;
+            box-shadow: 0 2px 10px #b1d5f733;
+            margin: 0 auto;
+        }
+        .download-link {
+            background: #2179d6;
+            color: #fff;
+            border-radius: 8px;
+            padding: 8px 22px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.17s;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .download-link:hover, .download-link:focus {
+            background: #68c3ff;
+        }
+        footer {
+            background: #e9f3fd;
+            border-top: 2px solid #bfd7f4;
+            margin-top: 38px;
+            padding: 18px 0 38px 0;
+            color: #222;
+            font-size: 1em;
+            position: relative;
+            text-align: center;
+        }
+        .footer-container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        .sponsors {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 38px;
+            margin-bottom: 14px;
+        }
+        .sponsor-logo {
+            height: 38px;
+            background: white;
+            border-radius: 7px;
+            padding: 2px 10px;
+            box-shadow: 0 1px 5px #a6b8e522;
+        }
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            background: #298fe6;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 2em;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #2179d638;
+            z-index: 1000;
+            transition: background 0.18s;
+        }
+        #backToTop:hover {
+            background: #2179d6;
+        }
+        @media (max-width: 900px) {
+            .card, .hero-content { padding-left: 4vw; padding-right: 4vw; }
+        }
+        @media (max-width: 700px) {
+            .card { padding: 18px 5vw; }
+            .tracks-list { flex-direction: column; }
+            .tracks-list > div { max-width: 100%; }
+            .sponsor-logo { height: 32px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>VCIP 2025 Video Coding Challenge</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#tracks">Tracks</a></li>
+                <li><a href="#dataset">Dataset</a></li>
+                <li><a href="#dates">Dates</a></li>
+                <li><a href="#evaluation">Evaluation</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#organizers">Organizers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <h2>Ultra Low-Bitrate Video Compression Challenge</h2>
+        <p>Focusing on innovative, perceptually-driven, low-latency video coding.<br>Tracks: <b>50kbps</b> & <b>200kbps</b></p>
+    </div>
+</section>
+
+<section id="about" class="card">
+    <h2>About the Challenge</h2>
+    <p>
+        The VCIP 2025  Low-Bitrate Video Compression Challenge aims to advance video compression technology for extremely limited bandwidth scenarios, with a particular focus on ultra low-bitrates (50kbps and 200kbps) where existing methods suffer significant degradation in quality and efficiency. While mainstream streaming services operate at higher bitrates, real-world applications such as satellite internet (e.g., Starlink) often face severe bandwidth restrictions, resulting in poor video quality. Traditional compression benchmarks have largely emphasized objective metrics at conventional bitrates, leaving a critical gap in research targeting ultra low-bitrate environments and perceptual quality assessment.
+
+	To address this gap, the VCIP 2025  Low-Bitrate Video Compression Challenge explicitly emphasizes both extreme bitrate constraints and subjective visual quality evaluation, encouraging innovative AI-powered and perceptually optimized codecs. By incorporating both objective and subjective assessments, the competition aims to stimulate the development of next-generation video codecs that can deliver high perceptual quality in low-latency, bandwidth-constrained scenarios. The challenge further encourages the exploration of generative AI and foundational models, reflecting recent advances in video diffusions, text-to-video and video synthesis, to fundamentally improve compression efficiency and perceptual quality at ultra low bitrates.
+    </p>
+</section>
+
+<section id="tracks" class="card">
+    <h2>Tracks & Requirements</h2>
+    <div class="tracks-list">
+        <div>
+            <h3><b>50kbps Track (Low-bitrate)</b></h3>
+            <ul style="text-align:left;display:inline-block;">
+                <li>
+                    Total decoding complexity:<br>
+                    Average ≤ 1000 kMac/pixel 
+                </li>
+                <li>
+                    Maximum decoding time:<br>
+                    7000 ms
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3><b>200kbps Track (High-bitrate)</b></h3>
+            <ul style="text-align:left;display:inline-block;">
+                <li>
+                    Total decoding complexity:<br>
+                    Average ≤ 300 kMac/pixel 
+                </li>
+                <li>
+                    Maximum decoding time:<br>
+                    125 ms (approximately 8fps)
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p style="margin-top:18px;">
+        <i>Note: All complexity constraints are evaluated based on the average computational cost per pixel for 720P resolution video.</i>
+    </p>
+</section>
+
+<section id="dataset" class="card">
+    <h2>Test Dataset</h2>
+    <p>
+        The official challenge dataset consists of <b>720P video sequences</b> (coming soon), primarily derived from HEVC-CTC datasets.<br>
+        <span style="color: #888;">[Download link coming soon]</span>
+    </p>
+</section>
+
+<section id="dates" class="card">
+    <h2>Important Dates</h2>
+    <ul>
+        <li><b>Jun. 30, 2025:</b> Registration deadline. Please send your team name, member list, and institutional affiliation to <a href="mailto:luguo2014@sjtu.edu.cn">luguo2014@sjtu.edu.cn</a> or <a href="mailto:wangjing215@huawei.com">wangjing215@huawei.com</a>.</li>
+        <li><b>July. 15, 2025:</b> Official release of the validation datasets to all registered teams.</li>
+        <li><b>Sept. 30, 2025:</b> Submission deadline for challenge papers.</li>
+        <li><b>Oct. 1, 2025:</b> Release of the final test dataset.</li>
+        <li><b>Oct. 5, 2025:</b> Final deadline for submitting compressed bitstreams and the corresponding decoded videos.</li>
+        <li><b>Oct. 15, 2025:</b> Leaderboard and winning teams announcement.</li>
+        <li><b>Oct. 15, 2025:</b> Notification of acceptance for VCIP challenge papers.</li>
+        <li><b>Dec. 1-4, 2025:</b> Award session at VCIP 2025. Winning teams will receive official certificates and be invited to present at the conference.</li>
+    </ul>
+</section>
+
+<section id="evaluation" class="card">
+    <h2>Evaluation Criteria</h2>
+    <ul>
+        <li><b>Preliminary Evaluation:</b> Submissions will be ranked using objective metrics, including PSNR, VMAF, and LPIPS.</li>
+        <li><b>Final Evaluation:</b> <b>Winners will be selected through a human subjective evaluation task.</b> Raters will compare the compressed outputs to the original videos and select their preferred codec based on perceived quality.</li>
+        <li><b>Computational Complexity:</b> The total average per-pixel computation for each track must meet the specified requirements, as measured on 720P videos.</li>
+        <li><b>Bitrate Constraint:</b> The average must remain below 50/200kbps, as applicable for each track.</li>
+    </ul>
+</section>
+
+<section id="awards" class="card">
+    <h2>Awards & Sponsors</h2>
+    <ul>
+        <li><b>First Place (per track):</b> $2000 + Certificate</li>
+        <li><b>Second Place (per track):</b> $1000 + Certificate</li>
+        <li><b>Best Innovation Award:</b> Certificate</li>
+        <li><b>Server support provided by SJTU & Huawei</b></li>
+    </ul>
+</section>
+
+<section id="organizers" class="card">
+    <h2>Organizers</h2>
+    <ul>
+        <li><b>Prof. Guo Lu</b> (SJTU) | <a href="mailto:luguo2014@sjtu.edu.cn">luguo2014@sjtu.edu.cn</a></li>
+        <li><b>Jing Wang</b> (Huawei) | <a href="mailto:wangjing215@huawei.com">wangjing215@huawei.com</a></li>
+        <li><b>Team:</b> Yunuo Chen (SJTU), Yibo Shi (Huawei), Kai Lin (Huawei)</li>
+    </ul>
+</section>
+
+<section id="contact" class="card">
+    <h2>Contact & Participation</h2>
+    <p>
+        For inquiries, please contact:<br>
+        Prof. Guo Lu (<a href="mailto:luguo2014@sjtu.edu.cn">luguo2014@sjtu.edu.cn</a>)<br>
+        Jing Wang (<a href="mailto:wangjing215@huawei.com">wangjing215@huawei.com</a>)<br>
+        Yunuo Chen (<a href="mailto:cyril-chenyn@sjtu.edu.cn">cyril-chenyn@sjtu.edu.cn</a>)<br>
+        Yibo Shi (<a href="mailto:shiyibo@huawei.com">shiyibo@huawei.com</a>)<br>
+        Kai Lin (<a href="mailto:linkai30@huawei.com">linkai30@huawei.com</a>)
+    </p>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2025 VCIP Video Coding Challenge. All rights reserved.</p>
+    </div>
+    <button id="backToTop" title="Back to top">&uarr;</button>
+</footer>
+<script src="scripts.js"></script>
+</body>
+</html>
