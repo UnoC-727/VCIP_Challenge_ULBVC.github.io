@@ -231,9 +231,9 @@
 <section id="about" class="card">
     <h2>About the Challenge</h2>
     <p>
-        The VCIP 2025  Low-Bitrate Video Compression Challenge aims to advance video compression technology for extremely limited bandwidth scenarios, with a particular focus on ultra low-bitrates (50kbps and 200kbps) where existing methods suffer significant degradation in quality and efficiency. While mainstream streaming services operate at higher bitrates, real-world applications such as satellite internet (e.g., Starlink) often face severe bandwidth restrictions, resulting in poor video quality. Traditional compression benchmarks have largely emphasized objective metrics at conventional bitrates, leaving a critical gap in research targeting ultra low-bitrate environments and perceptual quality assessment.
+        The VCIP 2025 Low-Bitrate Video Compression Challenge aims to advance video compression technology for extremely limited bandwidth scenarios, with a particular focus on ultra low-bitrates (50kbps and 200kbps) where existing methods suffer significant degradation in quality and efficiency. While mainstream streaming services operate at higher bitrates, real-world applications such as emergency command, disaster relief, and field rescue communications often face severe bandwidth restrictions, resulting in poor video quality. Traditional compression benchmarks have largely emphasized objective metrics at conventional bitrates, leaving a critical gap in research targeting ultra low-bitrate environments and perceptual quality assessment.
 
-	To address this gap, the VCIP 2025  Low-Bitrate Video Compression Challenge explicitly emphasizes both extreme bitrate constraints and subjective visual quality evaluation, encouraging innovative AI-powered and perceptually optimized codecs. By incorporating both objective and subjective assessments, the competition aims to stimulate the development of next-generation video codecs that can deliver high perceptual quality in low-latency, bandwidth-constrained scenarios. The challenge further encourages the exploration of generative AI and foundational models, reflecting recent advances in video diffusions, text-to-video and video synthesis, to fundamentally improve compression efficiency and perceptual quality at ultra low bitrates.
+        To address this gap, the challenge emphasizes both extreme bitrate constraints and subjective visual quality evaluation, encouraging innovative AI-powered and perceptually optimized codecs for <b>low-latency, bandwidth-constrained</b> scenarios. The challenge further encourages the exploration of generative AI and foundational models, reflecting recent advances in video diffusions, text-to-video and video synthesis, to fundamentally improve compression efficiency and perceptual quality at ultra low bitrates.
     </p>
 </section>
 
@@ -244,8 +244,12 @@
             <h3><b>50kbps Track (Low-bitrate)</b></h3>
             <ul style="text-align:left;display:inline-block;">
                 <li>
-                    Total decoding complexity:<br>
+                    <b>Total decoding complexity:</b><br>
                     Average ≤ 1000 kMac/pixel 
+                </li>
+                <li>
+                    <b>Total encoding complexity:</b><br>
+                    Average ≤ 1500 kMac/pixel 
                 </li>
                 <li>
                     Maximum decoding time:<br>
@@ -257,8 +261,12 @@
             <h3><b>200kbps Track (High-bitrate)</b></h3>
             <ul style="text-align:left;display:inline-block;">
                 <li>
-                    Total decoding complexity:<br>
-                    Average ≤ 300 kMac/pixel 
+                    <b>Total decoding complexity:</b><br>
+                    Average ≤ 50 kMac/pixel 
+                </li>
+                <li>
+                    <b>Total encoding complexity:</b><br>
+                    Average ≤ 75 kMac/pixel 
                 </li>
                 <li>
                     Maximum decoding time:<br>
@@ -268,7 +276,7 @@
         </div>
     </div>
     <p style="margin-top:18px;">
-        <i>Note: All complexity constraints are evaluated based on the average computational cost per pixel for 720P resolution video.</i>
+        <i>Note: All complexity constraints are evaluated based on the average computational cost per pixel for 720P resolution video. For each track, the encoding complexity is constrained to be no more than 1.5× the decoding complexity.</i>
     </p>
 </section>
 
@@ -297,10 +305,23 @@
 <section id="evaluation" class="card">
     <h2>Evaluation Criteria</h2>
     <ul>
-        <li><b>Preliminary Evaluation:</b> Submissions will be ranked using objective metrics, including PSNR, VMAF, and LPIPS.</li>
-        <li><b>Final Evaluation:</b> <b>Winners will be selected through a human subjective evaluation task.</b> Raters will compare the compressed outputs to the original videos and select their preferred codec based on perceived quality.</li>
-        <li><b>Computational Complexity:</b> The total average per-pixel computation for each track must meet the specified requirements, as measured on 720P videos.</li>
-        <li><b>Bitrate Constraint:</b> The average must remain below 50/200kbps, as applicable for each track.</li>
+        <li>
+            <b>Preliminary Evaluation:</b> Submissions will be ranked using objective metrics, including PSNR, VMAF, and LPIPS.
+        </li>
+        <li>
+            <b>Final Evaluation:</b> <b>Winners will be selected through a human subjective evaluation task.</b> Raters will compare the compressed outputs to the original videos and select their preferred codec based on perceived quality.
+        </li>
+        <li>
+            <b>Computational Complexity:</b> The total average per-pixel computation for encoding and decoding in each track must meet the specified requirements, as measured on 720P videos.
+        </li>
+        <li>
+            <b>Bitrate Constraint:</b> The average must remain below 50/200kbps, as applicable for each track. 
+        <li>
+            <b>Bandwidth-constrained:</b> Bitrate will be evaluated in 1-second sliding windows to ensure real-world bandwidth compliance.
+        </li>
+        <li>
+            <b>Low-latency:</b> Only low-latency encoding structures are allowed. All frames must be decodable in sequential order.
+        </li>
     </ul>
 </section>
 
