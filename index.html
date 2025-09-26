@@ -362,21 +362,39 @@
 
 
 <section id="qa" class="card">
-    <h2>Q&nbsp;&amp;&nbsp;A</h2>
+  <h2>Q&nbsp;&amp;&nbsp;A</h2>
 
-    <h3>Q1&nbsp;·&nbsp;How will PSNR be computed in this challenge?</h3>
-    <p>
-        The PSNR metric will be computed in the YUV420 domain.  
-        We will use a weighting scheme of 6 : 1 : 1 for the Y, U and V components, respectively  
-        (i.e., PSNR<sub>Y</sub> : PSNR<sub>U</sub> : PSNR<sub>V</sub> = 6 : 1 : 1).
-    </p>
+  <h3>Q1&nbsp;·&nbsp;How will PSNR be computed in this challenge?</h3>
+  <p>
+    The PSNR metric will be computed in the YUV420 domain.<br>
+    We will use a weighting scheme of 6 : 1 : 1 for the Y, U and V components, respectively
+    (i.e., PSNR<sub>Y</sub> : PSNR<sub>U</sub> : PSNR<sub>V</sub> = 6 : 1 : 1).
+  </p>
 
-    <h3>Q2&nbsp;·&nbsp;Are there any constraints on the intra-period (GOP) configuration?</h3>
-    <p>
-        There is no official constraint on the intra-period for the challenge.  
-        Participants are free to choose any intra-period configuration, including open-GOP structures.
-    </p>
+  <h3>Q2&nbsp;·&nbsp;Are there any constraints on the intra-period (GOP) configuration?</h3>
+  <p>
+    There is no official constraint on the intra-period for the challenge.<br>
+    Participants are free to choose any intra-period configuration, including open-GOP structures.
+  </p>
+
+  <h3>Q3&nbsp;·&nbsp;How to submit the final materials?</h3>
+  <p>Final Materials:</p>
+  <ol>
+    <li><strong>Compressed Bitstreams:</strong> The primary output of your codec.</li>
+    <li>
+      <strong>Reconstructed (Decoded) Videos:</strong> These must be converted to
+      <code>.mp4</code> format using the specific FFmpeg command:
+      <pre><code>ffmpeg -s {width}x{height} -pix_fmt yuv420p -r {fps} -i {yuv_file}.yuv -c:v libx264 -crf 1 -r {fps} -y {output_file}.mp4</code></pre>
+    </li>
+    <li><strong>Decoder Executable:</strong> The executable file for your decoder.</li>
+  </ol>
+
+  <h3>Q4&nbsp;·&nbsp;Where to submit?</h3>
+  <p>
+    <strong>Submission Method:</strong> Please upload all final materials to either Baidu Netdisk or Google Drive and send the shareable link to us.
+  </p>
 </section>
+
 
 <footer>
     <div class="footer-container">
